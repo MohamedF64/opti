@@ -1,0 +1,21 @@
+# Configuration propre à chaque installation : jamais dans le dépôt
+app/lib/config.dart
+app/android/app/google-services.json
+backend/tools/config_locale.py
+*.pem
+.env*
+
+# Construction et outils
+app/build/
+app/android/build/
+app/android/.kotlin/
+app/.dart_tool/
+app/.flutter-plugins*
+app/android/.gradle/
+app/android/local.properties
+app/android/key.properties
+backend/.venv/
+**/__pycache__/
+.vercel/
+.idea/
+*.iml
