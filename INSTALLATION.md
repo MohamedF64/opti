@@ -61,4 +61,4 @@ Dans Supabase, active les extensions `pg_cron` et `pg_net`, range `CRON_SECRET` 
 2. `python backend/tools/connecter_banque.py` : choisis la banque, autorise l'accès sur son site (valable 180 jours, renouvelable depuis l'app).
 3. `python backend/tools/synchroniser.py` pour une première synchro, ou tire vers le bas sur l'accueil de l'app.
 
-Les règles de reconnaissance des virements entre comptes sont écrites pour **CIC + Revolut** (`backend/api/synchro.py`, `virement_interne`) : adapte-les si tu utilises d'autres banques.
+Le nettoyage des libellés et la reconnaissance des virements entre tes comptes sont écrits pour les deux banques de l'auteur (`backend/api/synchro.py` : `nettoyer_libelle`, `date_achat`, `virement_interne`) : adapte-les à tes banques.

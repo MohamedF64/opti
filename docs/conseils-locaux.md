@@ -8,14 +8,14 @@ Pourquoi : gratuit, aucun fournisseur d'IA à gérer, résultats explicables et 
 Uniquement de l'**épargne simple** : mettre de l'argent de côté, dépenser moins, garder une réserve pour les imprévus, surveiller les abonnements. **Jamais** de conseil d'investissement (placements, bourse, crypto), ni de fiscalité ou d'impôts.
 
 ## Rôle de chaque compte
-- **CIC** : compte courant, où arrive la paie et d'où partent les dépenses du quotidien.
-- **Revolut** : la tirelire. On y verse de l'argent pour les imprévus et les économies (réserve « Économies »), et des abonnements peuvent y être prélevés.
+- **Compte courant** (ex. BoursoBank) : où arrive la paie et d'où partent les dépenses du quotidien.
+- **Tirelire** (ex. un livret LCL) : on y verse de l'argent pour les imprévus et les économies ; des abonnements peuvent aussi être prélevés sur un second compte.
 
 Conséquences pour les calculs :
-- Un **virement entre ses propres comptes** (CIC → Revolut, ou vers une réserve Revolut) est de l'**épargne**, pas une dépense. Il ne doit compter ni dans les dépenses du jour, ni dans le budget du mois, ni dans le donut « Cette semaine » (l'ancienne app y affichait « Transfert 3 € »). Il apparaît plutôt comme « mis de côté ce mois-ci ».
+- Un **virement entre ses propres comptes** (ex. BoursoBank → livret LCL) est de l'**épargne**, pas une dépense. Il ne doit compter ni dans les dépenses du jour, ni dans le budget du mois, ni dans le donut « Cette semaine » (l'ancienne app y affichait « Transfert 3 € »). Il apparaît plutôt comme « mis de côté ce mois-ci ».
 - Les conseils peuvent proposer un **montant à mettre de côté** (par exemple ce qui reste sous la limite du jour ou en fin de mois), avec un objectif de réserve pour les imprévus.
 - La **détection d'abonnements** regarde tous les comptes reliés.
-- Enable Banking expose la réserve Revolut comme un compte d'épargne séparé.
+- Enable Banking expose un livret ou une réserve d'épargne comme un compte séparé.
 
 ## Ce qu'une ancienne version affichait (accueil)
 - **Solde total** et une carte par compte.

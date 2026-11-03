@@ -1,13 +1,13 @@
 # Opti
 
-**Opti** est une app Android de budget personnel, construite pour un usage réel au quotidien : elle lit les comptes bancaires (CIC et Revolut, via l'accès DSP2 d'[Enable Banking](https://enablebanking.com)) et répond chaque jour à une seule question : **combien puis-je encore dépenser aujourd'hui ?**
+**Opti** est une app Android de budget personnel, construite pour un usage réel au quotidien : elle lit les comptes bancaires (via l'accès DSP2 d'[Enable Banking](https://enablebanking.com)) et répond chaque jour à une seule question : **combien puis-je encore dépenser aujourd'hui ?**
 
 > ⚠️ Opti est un **projet personnel**, publié pour montrer son fonctionnement. Ce n'est ni un service financier ni une app grand public : chaque personne qui veut l'utiliser doit l'installer **chez elle**, avec ses propres comptes Supabase, Vercel, Enable Banking et Firebase (voir [INSTALLATION.md](INSTALLATION.md)). Les conseils sont uniquement de l'épargne simple, jamais d'investissement ni de fiscalité.
 
 ## Ce que fait l'app
 
 - **Accueil** : la limite du jour (« Tu peux encore dépenser 39,55 € »), calculée de paie à paie, avec le détail « Pourquoi X € ? » ; opérations du jour, comptes, bilan du cycle et conseils.
-- **Objectifs** : projets et réserve « Imprévus », versements reconnus automatiquement dans la réserve Revolut, dépenses payées avec l'épargne d'un projet.
+- **Objectifs** : projets et réserve « Imprévus », versements reconnus automatiquement sur le compte d'épargne, dépenses payées avec l'épargne d'un projet.
 - **Stats** : dépenses par cycle de paie, donut par catégorie, comparaison avec le cycle précédent, jours passés sous la limite.
 - **Abonnements** : détection automatique, prix variables, prix maximum, essais gratuits avec rappels, verdict selon l'usage.
 - **Catalogue de prix** : offres moins chères pour ses propres abonnements (forfaits mobiles, IA, Amazon Prime), pages officielles surveillées chaque mois, bons plans Dealabs pour les enseignes où l'on achète déjà.

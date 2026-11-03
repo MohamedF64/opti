@@ -17,7 +17,7 @@ Chaque calcul d'Opti est d'abord écrit ici en français, avec un exemple chiffr
 | ✅ Toute sortie vers l'extérieur | courses, restaurant, Vinted, retrait au distributeur |
 | ✅ Les abonnements | Imagine R, assurance auto, Prixtel, Claude, Prime |
 | ➖ Les remboursements diminuent leur catégorie | Vinted +10,41 € |
-| ❌ Les virements entre tes comptes (épargne) | CIC → Revolut, réserve « Économies » |
+| ❌ Les virements entre tes comptes (épargne) | BoursoBank → livret LCL |
 | ❌ Les revenus | salaire, virements reçus |
 | ❌ **Les dépenses rattachées à un projet** (voir § 5) | permis, carte grise, Airbnb… payés avec l'argent mis de côté pour eux |
 
@@ -72,7 +72,7 @@ L'épargne visée d'un cycle est **proposée** par l'app puis **ajustable** :
 
 **Verser de l'argent sur un objectif, en deux temps :**
 1. Dans l'app : « Je mets 150 € de côté pour le voyage » → versement **en attente de virement**.
-2. Sur Revolut : virement de 150 € vers la réserve « Économies ».
+2. À la banque : virement de 150 € vers le livret (ex. livret LCL).
 3. À la synchro, l'app repère dans « Économies » une entrée du **même montant** dans les jours qui suivent → le versement passe à **confirmé**. Sans virement correspondant après 7 jours : rappel « tu n'as pas encore fait le virement de 150 € pour le voyage ». Filet de sécurité si la reconnaissance échoue : bouton « J'ai fait le virement » pour confirmer à la main.
 
 **Dépenser un projet** : quand la dépense arrive (ex. Airbnb 247,80 €), on la **rattache au projet** dans l'app → elle sort de l'enveloppe du jour et se déduit de ce qui a été épargné pour le projet. L'app le propose d'elle-même quand une dépense dépasse 100 € et qu'un projet actif a assez d'épargne (« Rattacher à Voyage ? ») ; rien n'est rattaché sans confirmation.
@@ -87,7 +87,7 @@ L'épargne visée d'un cycle est **proposée** par l'app puis **ajustable** :
 - **Contester** : sur un versement confirmé automatiquement, « Ce n'est pas ce virement » le remet en attente ; ce virement ne lui sera plus jamais proposé (et redevient « à attribuer »). **Justifier** : « J'ai fait le virement » confirme à la main, en choisissant si besoin l'opération de la réserve.
 - **Virement non déclaré** : une entrée dans « Économies » qui ne correspond à aucun versement déclaré → l'app demande « 150 € arrivés dans ta tirelire : pour quel objectif ? », Imprévus présélectionné. Idem pour une sortie de la réserve (« pour quel objectif as-tu pioché ? »). Seuls les mouvements à partir de la date de départ des objectifs (réglage `objectifs_depuis`) sont concernés.
 - **Tirelire, dépensé, épargne totale** : *dans la tirelire* = versé − repris ; les dépenses rattachées ne retirent rien de la tirelire (l'argent en est déjà sorti quand il a été repris : sinon une dépense de projet compterait deux fois). Progression d'un **projet** = (tirelire + dépensé) ÷ cible ; d'**Imprévus** = tirelire ÷ cible (coussin à reremplir après une urgence). Ex. Voyage : 350 versés, 247,80 repris, Airbnb rattaché → tirelire 102,20, dépensé 247,80, 100 %. Ex. Imprévus : 1 000 versés, 200 repris, garage 185 → 800, 80 %.
-- **Reprise suivie jusqu'aux dépenses** : pour chaque sortie de la réserve pas encore traitée, l'app suit l'argent (réserve → Revolut ; puis Revolut → CIC si le même montant arrive au CIC dans les 2 jours) et regarde les dépenses **comptabilisées** des 3 jours suivants sur le compte d'arrivée. Si elles font au moins la moitié de la reprise : « Tu as repris 200 € de ta tirelire le 03/11. C'était pour : … », les plus grosses dépenses qui tiennent dans le montant repris étant cochées d'avance. Objectif choisi → la reprise lui est attribuée (sauf si elle l'était déjà, par une pioche déclarée : objectif imposé) et les dépenses cochées lui sont rattachées. « Non, dépense normale » → rien n'est rattaché, la reprise reste « à attribuer » si elle ne l'était pas. La question n'est jamais reposée (`suggestion_ignoree` sur la reprise).
+- **Reprise suivie jusqu'aux dépenses** : pour chaque sortie de la réserve pas encore traitée, l'app suit l'argent (livret → compte LCL ; puis LCL → BoursoBank si le même montant arrive sur BoursoBank dans les 2 jours) et regarde les dépenses **comptabilisées** des 3 jours suivants sur le compte d'arrivée. Si elles font au moins la moitié de la reprise : « Tu as repris 200 € de ta tirelire le 03/11. C'était pour : … », les plus grosses dépenses qui tiennent dans le montant repris étant cochées d'avance. Objectif choisi → la reprise lui est attribuée (sauf si elle l'était déjà, par une pioche déclarée : objectif imposé) et les dépenses cochées lui sont rattachées. « Non, dépense normale » → rien n'est rattaché, la reprise reste « à attribuer » si elle ne l'était pas. La question n'est jamais reposée (`suggestion_ignoree` sur la reprise).
 - **Rattacher une dépense** : en touchant une dépense sur l'accueil, on choisit l'objectif qui la paie (projet ou Imprévus) ou on la détache. La suggestion automatique ne concerne que les **projets** actifs ayant un disponible suffisant, pour les dépenses comptabilisées de plus de 100 € depuis le départ des objectifs ; « Non, dépense normale » la fait disparaître pour de bon. Une dépense **en attente** ne se rattache pas encore (elle est remplacée à chaque synchro) : l'app demande d'attendre qu'elle soit comptabilisée.
 - **« C'était une annulation »** : pour une sortie de la réserve non déclarée, en plus du choix de l'objectif, l'app propose « C'était une annulation (rendre l'argent) ». Elle cherche les versements confirmés antérieurs dont la somme fait exactement le montant repris (les plus récents d'abord), les montre, puis sur validation les supprime ; l'aller et le retour dans la réserve sont marqués `reserve_annulee` et ne sont plus jamais « à attribuer ».
 
@@ -95,7 +95,7 @@ L'épargne visée d'un cycle est **proposée** par l'app puis **ajustable** :
 
 **Piocher dans la tirelire** (Imprévus ou projet), deux mécanismes complémentaires :
 - **Déclaration** : dans l'app, « Je pioche dans ma tirelire : 200 € pour Imprévus » ; la synchro confirme ensuite le virement et les dépenses (comme pour un versement).
-- **Détection (filet de sécurité)** : à partir d'un retrait de la réserve « Économies » (ou d'un virement Revolut → CIC) de montant R, l'app suit la chaîne en rapprochant les montants identiques à ± 2 jours (« Pocket withdrawal » → « To Prénom Nom » → « Transfert depuis Revolut »), puis regarde les dépenses des 3 jours suivants sur le compte d'arrivée. Si elles consomment au moins la moitié de R, elle demande : « Tu as repris 200 € de ta tirelire mardi, puis dépensé 185 € chez Garage Martin. C'était pour : Imprévus · Voyage · autre projet · non, dépense normale ? ». Rien n'est rattaché sans confirmation.
+- **Détection (filet de sécurité)** : à partir d'un retrait du livret (ou d'un virement LCL → BoursoBank) de montant R, l'app suit la chaîne en rapprochant les montants identiques à ± 2 jours (« Retrait livret » → « Virement à Prénom Nom » → « Virement reçu de LCL »), puis regarde les dépenses des 3 jours suivants sur le compte d'arrivée. Si elles consomment au moins la moitié de R, elle demande : « Tu as repris 200 € de ta tirelire mardi, puis dépensé 185 € chez Garage Martin. C'était pour : Imprévus · Voyage · autre projet · non, dépense normale ? ». Rien n'est rattaché sans confirmation.
 
 ## 6. Conseils d'épargne
 
@@ -180,7 +180,7 @@ Règles générales dans [conseils-locaux.md](conseils-locaux.md) : épargne sim
 - à **toutes les dépenses passées** de ce marchand ;
 - à **toutes les futures** : à la synchro, il passe après la détection des virements entre comptes, mais **avant** l'historique et les mots-clés.
 
-**Même marchand** : on compare les noms nettoyés (minuscules, sans chiffres, ponctuation ni ville entre parenthèses) ; c'est le même marchand si les deux noms sont égaux ou si l'un **commence par l'autre**, le plus court faisant au moins 5 caractères. Nécessaire parce que le CIC nomme différemment une opération en attente et comptabilisée.
+**Même marchand** : on compare les noms nettoyés (minuscules, sans chiffres, ponctuation ni ville entre parenthèses) ; c'est le même marchand si les deux noms sont égaux ou si l'un **commence par l'autre**, le plus court faisant au moins 5 caractères. Nécessaire parce qu'une banque peut nommer différemment une opération en attente et comptabilisée.
 
 > « C ET A FRANCE ville » (en attente, 31/10) → `c et a france ville` ; « C ET A FRANCE (Ville) » (comptabilisée, 15/08) → `c et a france`. Le second est le début du premier : même marchand. Choisir Shopping sur la dépense du 31/10 passe en Shopping les **23,98 €** du 31/10 et les **5,99 €** du 15/08 ; les prochains achats C&A arrivent directement en Shopping.
 
@@ -198,14 +198,14 @@ Règles générales dans [conseils-locaux.md](conseils-locaux.md) : épargne sim
 
 | Notification | Quand | Une seule fois par | Texte |
 |---|---|---|---|
-| Renouvellement de la banque | à la synchro de 12 h, quand il reste 14, 7 ou 1 jour(s) | banque + date d'expiration + palier | « Accès CIC : expire dans 7 jours. Renouvelle-le dans Opti › Réglages. » |
-| Synchro en panne | dernière synchro réussie d'une banque il y a plus de 24 h, ou accès expiré | banque + dernière réussite (ou expiration) | « Revolut ne se synchronise plus depuis hier. Ouvre Opti pour vérifier. » |
+| Renouvellement de la banque | à la synchro de 12 h, quand il reste 14, 7 ou 1 jour(s) | banque + date d'expiration + palier | « Accès BoursoBank : expire dans 7 jours. Renouvelle-le dans Opti › Réglages. » |
+| Synchro en panne | dernière synchro réussie d'une banque il y a plus de 24 h, ou accès expiré | banque + dernière réussite (ou expiration) | « LCL ne se synchronise plus depuis hier. Ouvre Opti pour vérifier. » |
 | Limite du jour dépassée | dépensé aujourd'hui > limite du jour | jour | « Limite du jour dépassée (131 %). Ouvre Opti pour voir le détail. » |
 | Paie reçue | une opération « Salaire » de moins de 3 jours | opération | « Ta paie est arrivée. Ouvre Opti pour voir ton budget du cycle. » |
 
 > 01/11 à 17 h : 72,40 € dépensés pour une limite de 55,27 € → 72,40 / 55,27 = **131 %** ; à 21 h, toujours dépassée : rien de plus (une fois par jour).
 >
-> Accès CIC jusqu'au 29/04/2027 : notifications le 15/04, le 22/04 et le 28/04 à 12 h.
+> Accès BoursoBank jusqu'au 29/04/2027 : notifications le 15/04, le 22/04 et le 28/04 à 12 h.
 
 **Réglages › Notifications** : un interrupteur par type, tous activés par défaut. Toucher une notification ouvre l'accueil (Réglages pour les deux notifications de banque).
 
